@@ -72,10 +72,6 @@ streamlit run Cripto_Mercado.py
 
 4. Esperar a que se inicie el servidor local e ingresar. Por defecto es el http://localhost:8501
 
-```shell
-Local URL: 
-```
-
 ## **Dashboard**
 
 El informe y la visualización de los datos se encuentran disponibles en el siguiente enlace: [CryptomercadoPorRicardoSanchez](https://criptomercadobyricardosanchez.streamlit.app/).
@@ -143,9 +139,7 @@ Tras realizar una análisis de todas las graficas y sus tendencias, se pudieron 
 
 ## **Contacto**
 
-Me llamo Ricardo Sánchez y soy un desarrollador web enfocado al Frontend y Analista de Datos de Venezuela. Comencé a los quince año en el mundo de la programacion, enfocandom en el mundo de la programacion. Combino el conocmiento en ambas areas para crear proyectos increibles y que esten a corder al avances tenologico de
-
-En mis perfiles sociales puedes encontrar mas sobre mi como pogramación.
+Me llamo Ricardo Sánchez y soy un Desarrollador Web enfocado al frontend y Analista de Datos de Venezuela. Comencé a los quince años en el mundo de la programación de forma autodidacta enfocando mi aprendizaje al desarrollo web, y tras comenzar la carrera de ingeniería en Informática, decidí orientar mi carrera profesional hacia el mundo del análisis de Datos. Actualmente busco combinar mis conocmientos en ambas áreas para ofrecer diferentes tipos de servicios y busco desarrolar proyectos que combinen tanto plataformas webs como conocimientos de Data.
 
 <br>
 

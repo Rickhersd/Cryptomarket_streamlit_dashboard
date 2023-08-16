@@ -10,14 +10,12 @@ _, center, _ = st.columns([1,3,1])
 body = """
 # Autor del Proyecto
 
-Mi nombre es ricardo Sanchez y soy ub desarrollador web y analista de de, y tengo una
-gran pasion por el mundo tecnologico y sector IT. COmenceen e lemund e la programaucon desde muy joven especializandome en el mundo de l desarrollo web, y en la actualidad, siendo estudiante universitario, estoy fncaod al mundo de la ciencia de Datos e ingenrira de Datos
+Me llamo Ricardo Sánchez y soy un Desarrollador Web enfocado al frontend y Analista de Datos de Venezuela. Comencé a los quince años en el mundo de la programación de forma autodidacta enfocando mi aprendizaje al desarrollo web, y tras comenzar la carrera de ingeniería en Informática, decidí orientar mi carrera profesional hacia el mundo del análisis de Datos. Actualmente busco combinar mis conocmientos en ambas áreas para ofrecer diferentes tipos de servicios y busco desarrolar proyectos que combinen tanto plataformas webs como conocimientos de Data.
 
-Para conocer mas sobre puedes seguirme en mis redes Sociales
-
-Linkedin: (
-
-Número de telefono: +58 0412 026 0569
+Linkedin: https://www.linkedin.com/in/ricardosanchez-dev/
+correo: rickhersd2002@gmail.com
+Github: https://github.com/Rickhersd
+Telefono: +58 0412 026 0569
 
 Data provided by CoinGecko
 

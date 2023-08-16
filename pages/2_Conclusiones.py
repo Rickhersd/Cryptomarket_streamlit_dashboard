@@ -1,113 +1,29 @@
 import streamlit as st
-import numpy as np
-import pandas as pd
-import utils.utils as utl
-from streamlit_extras.metric_cards import style_metric_cards
-
-utl.set_default_keys()
 
 body = """
 # Conclusiones
 
-Tras haber visto 
-Mi nombre es ricardo Sanchez y soy ub desarrollador web y analista de de, y tengo una
-gran pasion por el mundo tecnologico y sector IT. COmenceen e lemund e la programaucon desde muy joven especializandome en el mundo de l desarrollo web, y en la actualidad, siendo estudiante universitario, estoy fncaod al mundo de la ciencia de Datos e ingenrira de Datos
+- **Histórico de Datos y Correlación con Bitcoin:** Se observa que Bitcoin tiene el conjunto de datos más extenso entre las diez criptomonedas analizadas, abarcando desde 2014. Además, todas las criptomonedas muestran una correlación con el gráfico de Bitcoin, que se ve influenciada por la dominancia de esta moneda. Este aspecto es crucial ya que eventos futuros que impacten positivamente el precio de Bitcoin podrían resultar en aumentos en otras inversiones.
 
-Para conocer mas sobre puedes seguirme en mis redes Sociales
+- **Tendencia Alcista General:** En los gráficos de alta temporalidad, se aprecia una tendencia alcista en todas las criptomonedas debido a la correlación alcista con Bitcoin. Esto sugiere que el mercado en su conjunto está en una tendencia alcista a largo plazo. Independientemente de la moneda, todas las selectas parecen ser propuestas sólidas para inversión.
 
-Linkedin: (
+- **Patrón de Aumento y Caída en 2021:** Un patrón común en todas las criptomonedas es el fuerte aumento de precios a principios de 2021, con aumentos de hasta un 600% en la mayoría de los casos, seguido por una corrección en los meses posteriores. Este patrón se repite en todas las monedas y refleja la volatilidad inherente al mercado.
+
+- **Repunte Alcista en 2018:** Un segundo patrón relevante se evidencia en 2018 para varias criptomonedas: Bitcoin, XRP, Cardano, Solana y Ethereum. En este año, se experimentó un repunte alcista que llevó a nuevos máximos históricos. En las otras criptomonedas, no hay suficientes datos históricos para analizar este comportamiento.
+
+- **Exchange idóneo**: Binance es el exchange por excelencia en el criptomercado, tanto por su alto volumen de trading como por su nivel se confianza. Ademas, el BNB, la criptomoneda propia de la plataforma, se sitúa en el top 10 de criptos por capitalizacion del mercado.
+
+- **Relación con las Recompensas de Minería de Bitcoin:** Se identificó que estos repuntes alcistas a finales de 2018 y 2022 coincidieron con eventos en los que las recompensas por la minería de Bitcoin se redujeron. Esta observación respalda la idea de que el mercado es cíclico y sugiere que podría esperarse un patrón similar en 2025 o 2026, cuando se produzca la próxima reducción de recompensas. Cabe resutlar que este mismo patrón ocurrió en el año 2014, en el caso del bitcoin.
+
+- **Volumen de Comercialización y Precio de Bitcoin:** Aunque el volumen de comercio de Bitcoin muestra una tendencia bajista en los últimos meses, el precio de Bitcoin sigue una tendencia alcista. Esto indica un mayor interés en la compra de Bitcoin. Si se repitiera el volumen de comercio de anteriores máximos históricos, podríamos esperar patrones anteriores que conduzcan a nuevos máximos históricos.
+
+- **Potencial de Nuevos Máximos Históricos:** Considerando la fuerte correlación entre las criptomonedas y el Bitcoin, si el mercado cripto en su conjunto experimenta una nueva ola de volumen de comercialización, podríamos anticipar nuevos máximos históricos en todas las criptos selectas.
+
+- **Precio en Relación al Volumen de Comercialización:** A pesar de los volúmenes de comercialización actuales más bajos, los precios se encuentran en niveles más altos en comparación con años anteriores con niveles similares de comercio. Esto sugiere que un aumento en el volumen de comercio podría llevar a nuevos máximos en todas las criptomonedas.
+
+- **Recomendación de Portafolio:** En última instancia, todas las criptomonedas analizadas tienen proyectos sólidos respaldándolas. Sin embargo, la recomendación más sólida sería construir un portafolio que tenga Bitcoin y Ethereum como componentes principales, representando entre un 50% y 70% del capital total, mientras que el resto podría ser distribuido en otras criptomonedas.
 
 Numero de telefono
 
 """
-
-import time  # to simulate a real time data, time loop
-import pandas as pd  # read csv, df manipulation
-import plotly.express as px  # interactive charts
-import streamlit as st  # 🎈 data web app development
-
-# read csv from a github repo
-dataset_url = "https://raw.githubusercontent.com/Lexie88rus/bank-marketing-analysis/master/bank.csv"
-
-# read csv from a URL
-@st.cache_data 
-def get_data() -> pd.DataFrame:
-    return pd.read_csv(dataset_url)
-
-df = get_data()
-
-# dashboard title
-st.title("Real-Time / Live Data Science Dashboard")
-
-# top-level filters
-job_filter = st.selectbox("Select the Job", pd.unique(df["job"]))
-
-# creating a single-element container
-placeholder = st.empty()
-
-# dataframe filter
-df = df[df["job"] == job_filter]
-
-# near real-time / live feed simulation
-for seconds in range(200):
-
-    df["age_new"] = df["age"] * np.random.choice(range(1, 5))
-    df["balance_new"] = df["balance"] * np.random.choice(range(1, 5))
-
-    # creating KPIs
-    avg_age = np.mean(df["age_new"])
-
-    count_married = int(
-        df[(df["marital"] == "married")]["marital"].count()
-        + np.random.choice(range(1, 30))
-    )
-
-    balance = np.mean(df["balance_new"])
-
-    with placeholder.container():
-
-        # create three columns
-        kpi1, kpi2, kpi3 = st.columns(3)
-
-        # fill in those three columns with respective metrics or KPIs
-        kpi1.metric(
-            label="Age ⏳",
-            value=round(avg_age),
-            delta=round(avg_age) - 10,
-        )
-        
-        style_metric_cards(background_color="#519")
-        
-        kpi2.metric(
-            label="Married Count 💍",
-            value=int(count_married),
-            delta=-10 + count_married,
-        )
-        
-        kpi3.metric(
-            label="A/C Balance ＄",
-            value=f"$ {round(balance,2)} ",
-            delta=-round(balance / count_married) * 100,
-        )
-
-        # create two columns for charts
-        fig_col1, fig_col2 = st.columns(2)
-        with fig_col1:
-            st.markdown("### First Chart")
-            fig = px.density_heatmap(
-                data_frame=df, y="age_new", x="marital"
-            )
-            st.write(fig)
-            
-        with fig_col2:
-            st.markdown("### Second Chart")
-            fig2 = px.histogram(data_frame=df, x="age_new")
-            st.write(fig2)
-
-        st.markdown("### Detailed Data View")
-        st.dataframe(df)
-        time.sleep(1)
-
-
-
 st.markdown(body)
