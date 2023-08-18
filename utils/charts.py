@@ -17,7 +17,7 @@ def plot_treemap():
   ]
 
   option = {
-    "title": {"text": "Disk Usage", "left": "center"},
+    "title": {"text": "Treemap del Criptomercado", "left": "center"},
     "tooltip": {
       "formatter": JsCode(
         "function(info){var value=info.value;var treePathInfo=info.treePathInfo;var treePath=[];for(var i=1;i<treePathInfo.length;i+=1){treePath.push(treePathInfo[i].name)}return['<div class=\"tooltip-title\">'+treePath.join('/')+'</div>','Valor: '+ value +' USB'].join('')};"

@@ -52,8 +52,8 @@ st.markdown("""
 
 with st.sidebar:
   option = st.selectbox(
-    'Moneda de Referencia:',
-    ['bitcoin', 'ethereum', 'solana'])
+    'Criptomoneda:',
+    ['bitcoin', 'ethereum', 'solana', 'ripple', 'cardano', 'staked-ether', 'tron', 'polkadot', 'matic-network', 'binancecoin'])
   
 style_metric_cards(
   background_color="#d3d3ff",
@@ -74,7 +74,7 @@ with col111:
   
 with col211:
    
-  st.header('Precio Actual')
+  st.header('Precio Actual (usd)')
   st.metric("czxc", datos['market_data']['current_price']['usd'], label_visibility='collapsed')  
   
   st.header('Datos del Mercado')

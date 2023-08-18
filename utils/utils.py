@@ -18,7 +18,7 @@ def get_data_historical_kpi(id: str, vs_currency: str, days, kpi: str) -> pd.Dat
   """
   Función para obtener los datos historicos de una criptomoneda
   ...
-  Parametros
+  Parámetros
   ----------
   id : str
     identificador de la Criptomenda (ejemplo "bitcoin")

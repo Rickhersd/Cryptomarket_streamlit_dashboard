@@ -1,5 +1,7 @@
 import streamlit as st
 
+_, center, _ = st.columns([1,3,1])
+
 body = """
 # Conclusiones
 
@@ -23,7 +25,6 @@ body = """
 
 - **Recomendación de Portafolio:** En última instancia, todas las criptomonedas analizadas tienen proyectos sólidos respaldándolas. Sin embargo, la recomendación más sólida sería construir un portafolio que tenga Bitcoin y Ethereum como componentes principales, representando entre un 50% y 70% del capital total, mientras que el resto podría ser distribuido en otras criptomonedas.
 
-Numero de telefono
-
 """
-st.markdown(body)
+with center:
+    st.markdown(body)

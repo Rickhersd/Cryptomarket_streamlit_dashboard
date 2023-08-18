@@ -25,17 +25,17 @@ st.markdown("""
     }
     
     div.css-z5fcl4{
-      padding: 0rem
+      padding: 3rem
     }
     
     div.css-1629p8f.e1nzilvr1>h2{
       text-align: center;
       padding: 1rem;
       /* border: 1px solid black; */
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       box-shadow: 0px 0px 5px #00000033;
       border-radius: 0.5rem;
-      background-color: #a9a9ef;
+      background-color: #d9d9fb;
       margin-bottom: 0.5rem;
     }
     
@@ -43,10 +43,10 @@ st.markdown("""
       text-align: center;
       padding: 1rem;
       /* border: 1px solid black; */
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       box-shadow: 0px 0px 5px #00000033;
       border-radius: 0.5rem;
-      background-color: #a9a9ef;
+      background-color: #d9d9fb;
       margin-bottom: 0.5rem;
     }
     
@@ -66,7 +66,7 @@ st.markdown("""
     }
     
     div.css-1xarl3l{
-      font-size: 3rem;
+      font-size: 2rem;
     }
     
   </style>
@@ -83,37 +83,29 @@ with st.sidebar:
   )
   st.session_state['vs_currency'] = vs_currency
 
-st.markdown('''El mercado de Criptomendas esta liderado por un grupo peque;o de moendas las cuales abarcan gran parte de la capitalizacion del mercado en general. Estas''')
-
 global_data = utl.get_global_data(vs_currency)
 
 col1, col2, col3 = st.columns(3)
 col1.metric("Total de mercados", global_data['markets'])
 col2.metric("Cripto monedas Activas", global_data['active_cryptocurrencies'])
-col3.metric("Capitalización total del mercado", utl.human_format(global_data['total_market_cap']) + " usd")
+col3.metric("Capitalización total del mercado", utl.human_format(global_data['total_market_cap']) + " " +  vs_currency)
 
 col12, col22 = st.columns([1, 1])
 
 with col12:
   
   market_categories = pd.DataFrame(cg.get_coins_categories())
-  data = market_categories.iloc[0:10, :]
+  data = market_categories.sort_values(by='market_cap', ascending=False).iloc[0:10, :]
   
-  options = {
-    "yAxis": {
-        "type": "category",
-        "data": list(data['name']),
-    },
-    "title": {"text": "Porcentaje de Capitalizacion del Mercado", "left": "center"},
-    "xAxis": {"type": "value"},
-    "series": [{"data": list(data['market_cap']), "type": "bar"}],
-  }
   
   c = alt.Chart(data, 
     height=400,
-  
     ).mark_bar().encode(
-      y='name', x="market_cap"
+      x=alt.X("market_cap", title='Capitalización del Mercado'),
+      y=alt.Y('name', title='Categoría de Monedas').sort('-x'),
+      opacity=alt.value(1)
+    ).properties(
+      title='Categorías de Monedas Ordenadas por Capitalización'
     )
 
   st.altair_chart(c, use_container_width=True)
@@ -124,26 +116,16 @@ with col22:
   data = market_categories.iloc[0:10, :]
   
   exchanges_categories = pd.DataFrame(cg.get_exchanges_list())
-  exchanges_categories_top_10_trust = exchanges_categories.sort_values(by='trust_score_rank', ascending=True).head(10)
   data = exchanges_categories.sort_values(by='trust_score_rank', ascending=True).head(11)
-  
-  options = {
-    "yAxis": {
-        "type": "category",
-        "data": list(data['name']),
-    },
-    "title": {"text": "Porcente Capitalizacion del Mercado", "left": "center"},
-    "xAxis": {"type": "value"},
-    "series": [{"data": list(data['trade_volume_24h_btc']), "type": "bar"}],
-  }
-  
-  
   
   c = alt.Chart(data, 
     height=400,
     ).mark_bar().encode(
-      y='name', x="trade_volume_24h_btc"
-      )
+      x=alt.X("trade_volume_24h_btc", title='Volumen de comercialización de Bitcoin las últimas 24 horas'),
+      y=alt.Y('name', title='Exchanges')
+    ).properties(
+      title='Exchanges ordenados según Ranking de Confianza de CoinGecko'
+    )
 
   st.altair_chart(c, use_container_width=True)
   
